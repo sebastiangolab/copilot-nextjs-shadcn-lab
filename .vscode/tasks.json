@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "🚀 Start Development Server",
+			"type": "shell",
+			"command": "npm run dev",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build",
+			"detail": "Starts Next.js development server on localhost:3000"
+		},
+		{
+			"label": "🚀 Install Dependencies",
+			"type": "shell",
+			"command": "npm install",
+			"group": "build",
+			"detail": "Installs all npm dependencies"
+		},
+		{
+			"label": "🚀 Create Commit Command",
+			"type": "shell",
+			"command": "echo \"Generate and run ONLY the git commit command (no explanations, no additional text) based on these staged files: $(git diff --cached --name-only | tr '\\n' ', ' | sed 's/, $//')\" | pbcopy && echo '✅ Prompt copied to clipboard!'",
+			"group": "build",
+			"detail": "Generate prompt for AI to create and run git commit command (output only) based on staged files"
+		},
+	],
+}

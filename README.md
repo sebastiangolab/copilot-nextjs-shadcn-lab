@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Tailwind CSS + shadcn/ui + Biome
 
-## Getting Started
+Modern tech stack boilerplate project ready for production web application development.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **[Next.js 16](https://nextjs.org)** - React framework with App Router
+- **[TypeScript](https://www.typescriptlang.org/)** - Static typing
+- **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[shadcn/ui](https://ui.shadcn.com/)** - UI components
+- **[Biome](https://biomejs.dev/)** - Fast linter and formatter
+- **[ESLint](https://eslint.org/)** - Additional linting
+
+## 📦 Installed shadcn/ui components
+
+- `Button` - Button component
+- `Card` - Card with header, content and footer
+- `Input` - Input field
+
+## 🛠️ Available Commands
 
 ```bash
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build project for production
+npm run build
+
+# Start production server
+npm run start
+
+# Linting with ESLint
+npm run lint
+
+# Linting with Biome
+npm run lint:biome
+
+# Auto-fix Biome errors
+npm run lint:biome:fix
+
+# Code formatting
+npm run format
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Open your browser:**
+   Go to [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+3. **Start editing:**
+   Modify `src/app/page.tsx` - the page will auto-refresh
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Biome
+Configuration is in `biome.json`. Configured for:
+- TypeScript/React
+- 2-space indentation formatting
+- Automatic import sorting
+- Tailwind CSS support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tailwind CSS
+- Uses Tailwind CSS 4 (latest version)
+- Integrated with shadcn/ui
+- Dark mode support
 
-## Deploy on Vercel
+### shadcn/ui
+- Configuration in `components.json`
+- Components in `src/components/ui/`
+- Add new components: `npx shadcn@latest add [component-name]`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/                 # App Router (Next.js 13+)
+│   ├── globals.css     # Global CSS styles + Tailwind
+│   ├── layout.tsx      # Root layout
+│   └── page.tsx        # Homepage
+├── components/         # React components
+│   └── ui/            # shadcn/ui components
+├── lib/               # Utility functions
+└── lib/utils.ts       # cn() helper for Tailwind
+
+```
+
+## 🎨 Adding New shadcn/ui Components
+
+```bash
+# Examples of popular components
+npx shadcn@latest add dialog
+npx shadcn@latest add dropdown-menu
+npx shadcn@latest add form
+npx shadcn@latest add table
+npx shadcn@latest add toast
+```
+
+## 🔍 System Requirements
+
+- **Node.js** >= 20.9.0 (recommended: 22.x)
+- **npm** >= 10.x
+
+The project includes `.nvmrc` file with Node.js version - use `nvm use` to switch to the correct version.
+
+## 🚢 Deploy
+
+The easiest way to deploy is using [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+Check out [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
