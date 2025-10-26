@@ -1,21 +1,28 @@
-# Next.js + Tailwind CSS + shadcn/ui + Biome
+````markdown
+# next-shadcn-mcp-lab
 
-Modern tech stack boilerplate project ready for production web application development.
+Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo-patterns integration for UI development with AI.
 
 ## 🚀 Tech Stack
 
 - **[Next.js 16](https://nextjs.org)** - React framework with App Router
 - **[TypeScript](https://www.typescriptlang.org/)** - Static typing
 - **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[shadcn/ui](https://ui.shadcn.com/)** - UI components
-- **[Biome](https://biomejs.dev/)** - Fast linter and formatter
-- **[ESLint](https://eslint.org/)** - Additional linting
+- **[shadcn/ui](https://ui.shadcn.com/)** - UI components via MCP server
+- **[kibo-patterns](https://www.kibo-ui.com/patterns)** - Pre-built component patterns
+- **[GitHub Copilot](https://github.com/features/copilot)** - AI-assisted development
+- **[MCP Server](https://modelcontextprotocol.io/)** - Model Context Protocol for shadcn
+- **[ESLint](https://eslint.org/)** - Linting
 
-## 📦 Installed shadcn/ui components
+## 🎯 Project Purpose
 
-- `Button` - Button component
-- `Card` - Card with header, content and footer
-- `Input` - Input field
+This laboratory project demonstrates how to leverage:
+- **GitHub Copilot** with custom instructions for intelligent page/section generation
+- **shadcn MCP server** for seamless component integration
+- **kibo-patterns registry** for rapid UI prototyping
+- **AI-driven workflow** for building Next.js applications
+
+The setup enables generating complete pages and sections through natural language prompts to Copilot, which intelligently selects and assembles components from kibo-patterns.
 
 ## 🛠️ Available Commands
 
@@ -31,15 +38,6 @@ npm run start
 
 # Linting with ESLint
 npm run lint
-
-# Linting with Biome
-npm run lint:biome
-
-# Auto-fix Biome errors
-npm run lint:biome:fix
-
-# Code formatting
-npm run format
 ```
 
 ## 🚀 Quick Start
@@ -56,13 +54,6 @@ npm run format
    Modify `src/app/page.tsx` - the page will auto-refresh
 
 ## 🔧 Configuration
-
-### Biome
-Configuration is in `biome.json`. Configured for:
-- TypeScript/React
-- 2-space indentation formatting
-- Automatic import sorting
-- Tailwind CSS support
 
 ### Tailwind CSS
 - Uses Tailwind CSS 4 (latest version)

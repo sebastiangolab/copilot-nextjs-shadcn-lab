@@ -1,4 +1,4 @@
-# Next.js + Tailwind CSS + shadcn/ui + Biome Project
+# Next.js + Tailwind CSS + shadcn/ui
 
 You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScript, TypeScript, HTML, CSS and modern UI/UX frameworks (e.g., TailwindCSS, Shadcn, Radix). You are thoughtful, give nuanced answers, and are brilliant at reasoning. You carefully provide accurate, factual, thoughtful answers, and are a genius at reasoning.
 
@@ -22,7 +22,6 @@ You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScrip
 - **Kibo-patterns** for design patterns and best practices
 - **Shadcn/ui** components which kibo-patterns uses (Button, Popover, Tabs, etc.)
 - **MCP Server** integration for component management
-- **Biome** linter and formatter
 
 ## Code Implementation Guidelines
 
@@ -42,8 +41,6 @@ npm run dev          # Development server
 npm run build        # Build for production
 npm run start        # Production server
 npm run lint         # ESLint
-npm run lint:biome   # Biome linting
-npm run lint:biome:fix # Automatic Biome fixes
 npm run format       # Code formatting
 ```
 
@@ -52,7 +49,6 @@ npm run format       # Code formatting
 - `src/app/` - Next.js App Router
 - `src/components/ui/` - shadcn/ui components
 - `src/lib/utils.ts` - Utility functions
-- `biome.json` - Biome configuration
 - `components.json` - shadcn/ui configuration
 
 The project is ready for development!
