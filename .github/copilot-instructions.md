@@ -313,3 +313,4 @@ Once all patterns for a page are installed:
 **Remember: ALWAYS remember about responsive design principles**
 **Remember: To install basic shadcn/ui components use `npx shadcn@latest add [component-name]` not `npx shadcn-ui@latest add [component-name]`, shadcn-ui@latest is deprecated!**
 **Remember: ALWAYS text content move to variables under component**
+**Remember: If user want whole page, separate each section into its own file in sections folder**

@@ -1,5 +1,5 @@
 ````markdown
-# next-shadcn-mcp-lab
+# copilot-nextjs-kiboui-lab
 
 Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo-patterns integration for UI development with AI.
 
