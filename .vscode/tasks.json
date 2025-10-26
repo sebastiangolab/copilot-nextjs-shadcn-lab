@@ -8,7 +8,7 @@
 			"isBackground": true,
 			"problemMatcher": [],
 			"group": "build",
-			"detail": "Starts Next.js development server on localhost:3000"
+			"detail": "Starts Next.js development server on localhost:3001"
 		},
 		{
 			"label": "🚀 Install Dependencies",
@@ -23,6 +23,13 @@
 			"command": "echo \"Generate and run ONLY the git commit command (no explanations, no additional text) based on these staged files: $(git diff --cached --name-only | tr '\\n' ', ' | sed 's/, $//')\" | pbcopy && echo '✅ Prompt copied to clipboard!'",
 			"group": "build",
 			"detail": "Generate prompt for AI to create and run git commit command (output only) based on staged files"
+		},
+		{
+			"label": "🚀 Create a design system JSON profile",
+			"type": "shell",
+			"command": "echo \"Create a JSON profile design system that extracts visual data from these screenshots so that i can use the JSON output in Cursor to give it context on how to replicate such design systems in a consistent style. Avoid including the contents of the specific images. The output should include the design style, the structure and anything that'll help an AI replicate such designs.\" | pbcopy && echo '✅ Prompt copied to clipboard!'",
+			"group": "build",
+			"detail": "Generate prompt for AI to create a design system JSON profile"
 		},
 	],
 }

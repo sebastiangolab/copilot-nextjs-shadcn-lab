@@ -12,11 +12,18 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@app/components",
-    "utils": "@app/lib/utils",
-    "ui": "@app/components/ui",
-    "lib": "@app/lib",
-    "hooks": "@app/hooks"
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   },
-  "registries": {}
+  "registries": {
+    "@kibo-ui": {
+      "url": "https://www.kibo-ui.com/r/{name}.json"
+    },
+    "@kibo-patterns": {
+      "url": "http://localhost:3000/r/{name}.json"
+    }
+  }
 }

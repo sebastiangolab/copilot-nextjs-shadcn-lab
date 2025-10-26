@@ -50,7 +50,7 @@ npm run format
    ```
 
 2. **Open your browser:**
-   Go to [http://localhost:3000](http://localhost:3000)
+   Go to [http://localhost:3001](http://localhost:3001)
 
 3. **Start editing:**
    Modify `src/app/page.tsx` - the page will auto-refresh
