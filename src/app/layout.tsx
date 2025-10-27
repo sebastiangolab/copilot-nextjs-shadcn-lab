@@ -10,7 +10,8 @@ const allertaStencil = Allerta_Stencil({
 
 export const metadata: Metadata = {
   title: "ImAiPage - AI-Generated Landing Page",
-  description: "A demonstration of LLM-driven UI generation using Kibo UI design patterns",
+  description:
+    "A demonstration of LLM-driven UI generation using Shadcn components.",
 };
 
 export default function RootLayout({
@@ -21,17 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const theme = localStorage.getItem('theme') || 
-                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.classList.toggle('dark', theme === 'dark');
-              } catch (e) {}
-            `,
-          }}
-        />
         <script
           async
           crossOrigin="anonymous"
