@@ -16,7 +16,7 @@ Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo
 
 ## 🎯 Project Purpose
 
-This laboratory project demonstrates how to leverage:
+This laboratory project where i tested how to use:
 - **GitHub Copilot** with custom instructions for intelligent page/section generation
 - **shadcn MCP server** for seamless component integration
 - **kibo-patterns registry** for rapid UI prototyping
@@ -40,9 +40,24 @@ npm run start
 npm run lint
 ```
 
-## 🚀 Quick Start
+## 🚀 Quick Start to test
 
-1. **Start the development server:**
+1. Clone repo from github
+   ```bash
+   git clone LINK
+   cd copilot-nextjs-kiboui-lab
+   ```
+
+2. Install dependencies
+   ```bash
+   npm i
+   ```
+
+3. Clone and locally run repo: https://github.com/ailabs-393/Patterns-Registry.git - this is needed to correctly read @kibo-patterns registry in shadcn mcp 
+
+4. Try to generate page or section by copilot, make prompt for example "Create page by description: [detailed about page or secion]"
+
+5. **Start the development server:**
    ```bash
    npm run dev
    ```
@@ -50,20 +65,8 @@ npm run lint
 2. **Open your browser:**
    Go to [http://localhost:3001](http://localhost:3001)
 
-3. **Start editing:**
-   Modify `src/app/page.tsx` - the page will auto-refresh
 
 ## 🔧 Configuration
-
-### Tailwind CSS
-- Uses Tailwind CSS 4 (latest version)
-- Integrated with shadcn/ui
-- Dark mode support
-
-### shadcn/ui
-- Configuration in `components.json`
-- Components in `src/components/ui/`
-- Add new components: `npx shadcn@latest add [component-name]`
 
 ## 📁 Project Structure
 
@@ -80,21 +83,10 @@ src/
 
 ```
 
-## 🎨 Adding New shadcn/ui Components
-
-```bash
-# Examples of popular components
-npx shadcn@latest add dialog
-npx shadcn@latest add dropdown-menu
-npx shadcn@latest add form
-npx shadcn@latest add table
-npx shadcn@latest add toast
-```
-
 ## 🔍 System Requirements
 
-- **Node.js** >= 20.9.0 (recommended: 22.x)
-- **npm** >= 10.x
+- **Node.js** 22.11.0
+- **npm** 10.9.0
 
 The project includes `.nvmrc` file with Node.js version - use `nvm use` to switch to the correct version.
 

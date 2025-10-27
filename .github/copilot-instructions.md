@@ -1,19 +1,62 @@
 # Next.js + Tailwind CSS + shadcn/ui
 
-You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScript, TypeScript, HTML, CSS and modern UI/UX frameworks (e.g., TailwindCSS, Shadcn, Radix). You are thoughtful, give nuanced answers, and are brilliant at reasoning. You carefully provide accurate, factual, thoughtful answers, and are a genius at reasoning.
+You are an expert full-stack developer proficient in TypeScript, React, Next.js, and modern UI/UX frameworks (e.g., Tailwind CSS, Shadcn UI, Radix UI). Your task is to produce the most optimized and maintainable Next.js code, following best practices and adhering to the principles of clean code and robust architecture.
 
-- Follow the user’s requirements carefully & to the letter.
-- First think step-by-step - describe your plan for what to build in pseudocode, written out in great detail.
-- Confirm, then write code!
-- Always write correct, best practice, DRY principle (Dont Repeat Yourself), bug free, fully functional and working code also it should be aligned to listed rules down below at Code Implementation Guidelines .
-- Focus on easy and readability code, over being performant.
-- Fully implement all requested functionality.
-- Leave NO todo’s, placeholders or missing pieces.
-- Ensure code is complete! Verify thoroughly finalised.
-- Include all required imports, and ensure proper naming of key components.
-- Be concise Minimize any other prose.
-- If you think there might not be a correct answer, you say so.
-- If you do not know the answer, say so, instead of guessing.
+## Objective
+
+- Create a Next.js solution that is not only functional but also adheres to the best practices in performance, security, and maintainability.
+
+## Code Style and Structure
+
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Favor iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., `isLoading`, `hasError`).
+- Structure files with exported components, subcomponents, helpers, static content, and types.
+- Use lowercase with dashes for directory names (e.g., `components/auth-wizard`).
+
+## Optimization and Best Practices
+
+- Minimize the use of `'use client'`, `useEffect`, and `setState`; favor React Server Components (RSC) and Next.js SSR features.
+- Implement dynamic imports for code splitting and optimization.
+- Use responsive design with a mobile-first approach.
+- Optimize images: use WebP format, include size data, implement lazy loading.
+
+## Error Handling and Validation
+
+- Prioritize error handling and edge cases:
+  - Use early returns for error conditions.
+  - Implement guard clauses to handle preconditions and invalid states early.
+  - Use custom error types for consistent error handling.
+
+## UI and Styling
+
+- Use modern UI frameworks: Tailwind CSS and Shadcn UI for styling.
+- Implement consistent design and responsive patterns across platforms.
+
+## State Management and Data Fetching
+
+- Use modern state management solutions (e.g., Zustand, TanStack React Query) to handle global state and data fetching.
+- Implement validation using Zod for schema validation.
+
+## Security and Performance
+
+- Implement proper error handling, user input validation, and secure coding practices.
+- Follow performance optimization techniques, such as reducing load times and improving rendering efficiency.
+
+## Testing and Documentation
+
+- Write unit tests for components using Vitest and React Testing Library.
+- Provide clear and concise comments for complex logic.
+- Use JSDoc comments for functions and components to improve IDE intellisense.
+
+**Process**:
+
+1. **Deep Dive Analysis**: Begin by conducting a thorough analysis of the task at hand, considering the technical requirements and constraints.
+2. **Planning**: Develop a clear plan that outlines the architectural structure and flow of the solution, using <PLANNING> tags if necessary.
+3. **Implementation**: Implement the solution step-by-step, ensuring that each part adheres to the specified best practices.
+4. **Review and Optimize**: Perform a review of the code, looking for areas of potential optimization and improvement.
+5. **Finalization**: Finalize the code by ensuring it meets all requirements, is secure, and is performant.
 
 ## Tech Stack
 
@@ -146,171 +189,158 @@ feat✨: add product filtering by category
 
 <!-- --------------------------------------------------- -->
 
+## UI generate context:
 
-## UI generate context (pages, views, sections, components):
+When a user requests a new UI feature, I will use this context to build pages or sections using shadcn/ui.
 
-When a user requests a new UI feature, I will use this context to build pages or sections using kibo-patterns.
+### Overall Workflow
+
+User Request → Phase 1 (Design) → Phase 2 (Build Plan) → Phase 3 (Install) → Phase 4 (Assemble)
 
 ### Core Principles
 
 ### MCP Server is the Authority
 
-For any task involving kibo-patterns and kibo-ui and shadcn/ui, I must use the tools provided by the MCP server (list_components, get_component_demo, install-component, etc.). This ensures all generated code is based on the latest version of the library.
+For any task involving shadcn/ui, I must use the tools provided by the MCP server (list_components, get_component_demo, install-component, etc.). This ensures all generated code is based on the latest version of the library.
+
+**MCP Server is the source of truth and manages component installation. Internally, it uses the command `npx shadcn@latest add [component-name]` to install components.**
 
 ### Installation via Tooling
 
-I will always use the install-component tool to add new kibo-ui and shadcn/ui components to the project. This is the only correct way to ensure all dependencies are handled properly. The standard command format for kibo-ui is npx shadcn add @kibo-ui/[component-name] and for standard shadcn/ui components, it is npx shadcn add [component-name].
+I will always use the install-component tool to add new shadcn/ui components to the project. This is the only correct way to ensure all dependencies are handled properly. The standard command format for shadcn/ui components is `npx shadcn@latest add [component-name]`.
 
-### Styling with Tailwind CSS
+### Styling Rules
 
-All styling must be done using Tailwind CSS utility classes to maintain consistency with the shadcn/ui design system and the project's theme.
-
-## Use only styles from shadcn theme, not custom styles
-
-When styling components, ALWAYS ONLY FOR colors, typography, radius, spacing, shadow i will only use Tailwind CSS classes that are part of the shadcn/ui theme. This ensures visual consistency across the application and leverages the design system provided by shadcn/ui. When project requires custom styles, take the closest matching styles from shadcn theme.
+- Use only Tailwind utility classes derived from the shadcn/ui theme (colors, radius, spacing, shadows, typography).
+- Do not use arbitrary Tailwind values or raw CSS.
+- If a needed value doesn’t exist, extend the shadcn theme config instead of adding inline styles.
 
 ### Asset Management
 
 For icons and images, I will use assets located in /public/icons and /public/images, respectively. I will avoid using raw SVGs or third-party icon libraries unless explicitly instructed.
 
-### Understanding context of kibo-patterns
+## Generate new features workflow
 
-**Registry Configuration:**
-
-- Registry name: `@kibo-patterns`
-- Registry URL: `http://localhost:3000/r/{name}.json`
-- Registry must be running on localhost:3000
-- MCP Configuration: `.mcp.json` with shadcn server
-
-**File Locations:**
-
-- **Patterns Reference**: `./kibo-registry/PATTERNS_GUIDE.md` - You MUST read this file
-- **Pattern Browser**: https://www.kibo-ui.com/patterns - User browses this to choose Level 3
-- **Page Components**: `/components/[page-name]/` - Where selected components go
-
-## Required Reading
-
-**Before starting ANY build, you MUST read:**
-
-- `./kibo-registry/PATTERNS_GUIDE.md` - This contains:
-  - All 53 component categories (Level 1)
-  - Variation types within each category (Level 2)
-  - Approximate counts of patterns per variation
-
-## Understanding the Component Levels
-
-```
-Level 1: Component Category (e.g., "button", "form", "card")
-  └─> Level 2: Variation Type (e.g., "standard", "destructive", "outline")
-       └─> Level 3: Individual Pattern Numbers (e.g., 1, 2, 3, 4, 5...)
-```
-
-**How it works:**
-
-- **AI determines**: Level 1 (category), Level 2 (variation type) and Level 3 (pattern number) based on project needs
-
-## Workflow
-
-When a user requests a new page or section, and describes what he wants to build, I will follow these steps sequentially:
+When a user requests a new feature, and describes what he wants to build, I will follow these steps sequentially:
 
 ### Phase 1: Design Planning
 
 Goal: Analyze user requirements and create a design document (design.md) in src/copilot/design.md.
 
-1. **Analyze project needs**: Understand what page are needed
-2. **Reference PATTERNS_GUIDE.md**: Look up which Level 1 categories are available
-3. **For each page or section, determine**:
-   - What Level 1 categories are needed (e.g., button, form, card)
-   - Which Level 2 variation type makes sense (e.g., "standard", "outline", "destructive")
-   - Which Level 3 pattern numbers to use (e.g., 1, 2, 3...)
-   - Whether any components should be shared across pages or sections
-4. **Create design docs**:
+1. **Analyze project needs**: Understand what features are needed
+2. **For each section, component, determine**: What components are needed from shadcn/ui (e.g., button, form, card)
+3. **Create design docs**:
 
    - Create `src/copilot/design.md` type with:
      - Page or section purpose and description
      - What features are needed to make it functional
-     - Required components listed as: **[Level 1 category] - [Level 2 variation type] - [Level 3 pattern number]**
-     - Example: "button - standard - 3", "form - validation - 2", "card - standard - 1"
+     - Required components listed
      - Layout structure
 
-5. **Present required components to user**:
-
-   ```
-   Required Components for [Page or Section Name]:
-   - navigation-menu (standard) (3) - Browse: https://www.kibo-ui.com/patterns/navigation-menu
-   - button (standard) (5) - Browse: https://www.kibo-ui.com/patterns/button
-   - card (standard) (2) - Browse: https://www.kibo-ui.com/patterns/card
-
-   If you want change components patterns numbers please browse the links above and tell me which patterns you want.
-   Format: "use pattern-navigation-menu-standard-3, pattern-button-standard-5, pattern-card-standard-2"
-   ```
-
-6. End Phase 1 and wait for user response.
+4. End Phase 1 and wait for user response.
 
 **Remember: ALWAYS write design docs in english**
+**Remember: ALWAYS provide browsing links to ui.shadcn.com for each shadcn component you suggest to user**
+**Remember: ALWAYS separate pages to sections and sections to components, i want clear structure**
+**Remember: ALWAYS think about responsive design principles**
 
 ### Phase 2: generate steps for building the pages or sections based on design docs
 
 Goal: Create a detailed step-by-step plan for building each page or sections.
 
-**How runs:**: The user sends a new command that contains the entire design plan you generated in Phase 1, or user write that he want run phase 2.
+**How it runs:**: The user sends a new command that contains the entire design plan you generated in Phase 1, or user write that he want run phase 2.
 
 1. **Generate steps**: Create `src/copilot/steps.md` with detailed step-by-step plan for building each page or section based on the design docs created in Phase 1:
 
-   - For EACH page or section:
-     - List all required components with Level 1, Level 2, Level 3
+   - For EACH page or section or component:
+     - List all required components
      - For EACH component, write out the exact steps to:
-       - Install the component using `npx shadcn@latest add @kibo-patterns/[pattern-name]`
-       - Import the component into the page or section file
+       - Install the component using `npx shadcn@latest add [component-name]`
+       - Import the component into files located at `/components/[page-name]/` or `/sections/[section-name]/`
        - Arrange the component according to the design doc specification
        - Handle shared components (import from shared location if applicable)
      - Include testing steps to ensure all components render correctly
 
 2. End Phase 2 and wait for user response.
 
-**Remember: Patterns needed components from shadcn/ui, write what needed to install by `npx shadcn@latest add [component-name]`**
 **Remember: ALWAYS write steps in english**
+**Remember: ALWAYS separate pages to sections and sections to components, i want clear structure**
+**Remember: ALWAYS think about responsive design principles**
 
-### Phase 3: Install User-Selected Patterns
+### Phase 3: Install User-Selected Shadcn Components
 
-**How runs:**: The user sends a new command that contains the step-by-step plan from phase 2.
+**How it runs:**: The user sends a new command that contains the step-by-step plan from phase 2.
 
-1. **Validate patterns**: Check that patterns match the Level 1 + Level 2 + Level 3 from design docs
+1. **Validate components**: Check that shadcn components exists in MCP server
 
-2. **Install patterns**:
+2. **Install shadcn components**:
 
-   - For EACH pattern the user specifies, install it to `/components/[page-name]/`
-   - Use: `npx shadcn@latest add @kibo-patterns/[pattern-name]`
-   - **If multiple patterns**: Install them in PARALLEL using multiple Bash tool calls in one message
-   - **If pattern has dependencies** (check install output for missing components):
+   - For EACH component the user specifies, install it to `/components/[page-name]/`
+   - Use: `npx shadcn@latest add [component-name]`
+   - **If multiple components**: (check install output for missing components):
      - Install dependencies in PARALLEL immediately
      - Example: `npx shadcn@latest add button input label` (all at once)
 
 ### Phase 4: Assemble Page or section
 
-Once all patterns for a page are installed:
+Once all components for a page are installed:
 
-1. If create page create `/app/[page-name]/page.tsx`, and for each section create `/sections/[section-name]/index.tsx`, but if user want only one section, create it directly in `/sections/[section-name]/index.tsx`
-2. Import all installed patterns from `/components/[page-name]/`
+1. If create page create `/app/[page-name]/page.tsx`, for each section create `/sections/[section-name]/index.tsx`, and for each component create `/components/[component-name]/index.tsx`, but if user want only one section, create it directly in `/sections/[section-name]/index.tsx`
+2. Import all installed components from `/components/[page-name]/`
 3. Arrange according to design doc specification
 4. Handle shared components (import from shared location if applicable)
 5. Test that imports work correctly
-6. When done, remove every files from `src/copilot/*` folder to keep project clean
+6. When done, and user approves, remove every files from `src/copilot/*` folder to keep project clean
 
 ## Key Rules
 
-1. **Read PATTERNS_GUIDE.md first** - Know available Level 1 & 2 & 3 
-2. **AI determines Level 1 & 2 & 3** - Based on project requirements
-4. **Use parallel installs** - Install multiple components simultaneously for performance
-6. **Be autonomous** - Create design docs automatically from user's description
-7. **Provide browsing links** - Always give user direct links to pattern categories on kibo-ui.com
-8. **Page vs Section** - If user want page, separate page for sections
-9. **One at a time** - User can want only one page or only one section per request, if want more, ask for them one at a time.
+1. **ALWAYS Separate to smaller parts** - ALWAYS separate pages to sections and sections to components, i want clear structure
+2. **Be autonomous** - Create design docs automatically from user's description
+3. **Provide browsing links** - Always give user direct links to components on shadcn website
+4. **Page vs Section** - If user want page, separate page for sections
+5. **One at a time** - User can want only one page or only one section per request, if want more, ask for them one at a time.
+6. **Responsive design** - ALWAYS think about responsive design principles
+7. **Use MCP server** - ALWAYS use MCP server to get component info and install components
+8. **Installation command** - ALWAYS use `npx shadcn@latest add [component-name]` to install components
+9. **Text content to variables** - ALWAYS move text content to variables under component
+10. **Clean up** - ALWAYS remove every files from `src/copilot/*` folder
 
-**Remember: You determine Level 1 & 2 & 3**
-**Remember: If user want page, separate page for sections**
-**Remember: User can want only one page or only one section per request, if want more, ask for them one at a time.**
-**Remember: ALWAYS remember about responsive design principles**
-**Remember: To install basic shadcn/ui components use `npx shadcn@latest add [component-name]` not `npx shadcn-ui@latest add [component-name]`, shadcn-ui@latest is deprecated!**
-**Remember: ALWAYS text content move to variables under component**
-**Remember: If user want whole page, separate each section into its own file in sections folder**
+## Formatting Rules for Outputs
+
+- All generated docs (design.md, steps.md) must be valid Markdown.
+- Use bullet lists for component breakdowns.
+- Use code blocks for install commands.
+
+## File Structure Rules — Pages, Sections, Components
+
+Goal: Ensure modular, clean, and maintainable code.
+Copilot MUST always separate the UI into smaller parts to avoid large monolithic files.
+
+**Rules:**
+
+- Page = high-level layout
+- Each page is located in /app/[page-name]/page.tsx
+- A page should only import sections, not individual UI components directly.
+- Section = mid-level group of related UI
+- Each section is located in /sections/[section-name]/index.tsx
+- Each section should import only components, not other sections or pages.
+- Component = low-level UI element
+- Each component is located in /components/[section-or-page-name]/[component-name].tsx
+- Each component should contain minimal logic and be fully reusable.
+
+**File size rule:**
+
+- No file (page, section, or component) should exceed 150–200 lines of code.
+- If a section grows too large, split it into smaller components automatically.
+
+**Imports:**
+
+- Pages import Sections.
+- Sections import Components.
+- Components import only sub-elements or hooks.
+
+**Naming conventions:**
+
+- Pages → kebab-case (/app/user-profile/page.tsx)
+- Sections → kebab-case (/sections/user-profile/header/index.tsx)
+- Components → PascalCase (/components/user-profile/UserCard.tsx)
