@@ -34,6 +34,75 @@ You are an expert full-stack developer proficient in TypeScript, React, Next.js,
 - Use modern UI frameworks: Tailwind CSS and Shadcn UI for styling.
 - Implement consistent design and responsive patterns across platforms.
 
+## Design Tokens and Theme Styling Rules
+
+When styling components or layouts, I must strictly follow the design tokens defined in the shadcn/ui theme.
+These include: colors, shadows, borders, radius, spacing, and typography.
+
+**Theme values location**: All shadcn/ui theme values are defined in `src/app/globals.css`:
+- `:root` section contains light mode values
+- `.dark` section contains dark mode values
+- `@theme inline` section maps CSS variables to Tailwind utilities
+
+### 1. Color System
+
+Always use theme color variables (e.g. `bg-primary`, `text-muted-foreground`, `border-border`, `bg-accent`).
+
+Never use raw color codes like `#fff`, `rgb()`, or `hsl()` directly in code.
+
+If a required color does not exist:
+
+- Find the closest matching color token (for example, use `bg-muted` instead of `bg-gray-100`).
+- If no close match exists, add a new semantic color to the theme config file under `extend.colors` in `tailwind.config.ts` or `src/lib/theme.ts`.
+- Use semantic naming conventions such as: `brand-*`, `accent-*`, `neutral-*`, `warning-*`, `success-*`.
+
+Example:
+
+```tsx
+<Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+  Save changes
+</Button>
+```
+
+### 2. Shadows
+
+Use only existing shadow tokens from the theme (e.g. `shadow-sm`, `shadow-md`, `shadow-lg`).
+
+Do not create inline `box-shadow` definitions in CSS or JSX.
+
+If a new shadow is required, define it once in the `theme.extend.boxShadow` section and reuse it by name.
+
+### 3. Borders and Radius
+
+Always use Tailwind classes tied to the theme: `border`, `border-border`, `rounded-md`, `rounded-lg`, etc.
+
+Never define custom pixel values (`rounded-[6px]`, `border-[1px]`) directly in code.
+
+If a unique border radius is needed (e.g. for brand-specific card corners), define a new token in the `borderRadius` section of the theme.
+
+### 4. Typography
+
+Use only text styles defined in the theme: `text-sm`, `text-base`, `text-lg`, `font-medium`, `font-semibold`, etc.
+
+Never use custom font sizes (`text-[13px]`) or raw CSS font properties in components.
+
+For new text styles, extend the `fontSize` or `fontWeight` sections in the Tailwind theme.
+
+### 5. Spacing and Layout
+
+Use theme spacing utilities (e.g. `p-4`, `gap-6`, `m-2`).
+
+Avoid arbitrary spacing (`p-[18px]`, `mt-[11px]`) in component code.
+
+If new spacing scales are needed, add them under `theme.extend.spacing`.
+
+### 6. General Rule
+
+**"If it's not in the theme, add it — don't hardcode it."**
+
+All visual values (colors, shadows, borders, radius, typography, spacing) must come from the shadcn theme configuration.
+When extending the theme, ensure all new tokens follow existing naming conventions and are added through Tailwind's `extend` API.
+
 ## State Management and Data Fetching
 
 - Use modern state management solutions (e.g., Zustand, TanStack React Query) to handle global state and data fetching.
@@ -56,14 +125,13 @@ You are an expert full-stack developer proficient in TypeScript, React, Next.js,
 2. **Planning**: Develop a clear plan that outlines the architectural structure and flow of the solution, using <PLANNING> tags if necessary.
 3. **Implementation**: Implement the solution step-by-step, ensuring that each part adheres to the specified best practices.
 4. **Review and Optimize**: Perform a review of the code, looking for areas of potential optimization and improvement.
-5. **Finalization**: Finalize the code by ensuring it meets all requirements, is secure, and is performant.
+5. **Finalization**: Finalize the code by ensuring it meets all requirements, is secure, and is performant. Perform a final QA pass: check accessibility (a11y), responsiveness, and linting.
 
 ## Tech Stack
 
 - **Next.js 16** with App Router and TypeScript
 - **Tailwind CSS 4** for styling
-- **Kibo-patterns** for design patterns and best practices
-- **Shadcn/ui** components which kibo-patterns uses (Button, Popover, Tabs, etc.)
+- **Shadcn/ui** components (Button, Popover, Tabs, etc.)
 - **MCP Server** integration for component management
 
 ## Code Implementation Guidelines
@@ -71,11 +139,10 @@ You are an expert full-stack developer proficient in TypeScript, React, Next.js,
 Follow these rules when you write code:
 
 - Use early returns whenever possible to make the code more readable.
-- Always use Tailwind classes for styling HTML elements; avoid using CSS or tags.
-- Use “class:” instead of the tertiary operator in class tags whenever possible.
-- Use descriptive variable and function/const names. Also, event functions should be named with a “handle” prefix, like “handleClick” for onClick and “handleKeyDown” for onKeyDown.
-- Implement accessibility features on elements. For example, a tag should have a tabindex=“0”, aria-label, on:click, and on:keydown, and similar attributes.
-- Use consts instead of functions, for example, “const toggle = () =>”. Also, define a type if possible.
+- Always use Tailwind classes for styling elements; avoid inline styles or custom CSS files.
+- Use descriptive variable and function/const names. Also, event functions should be named with a "handle" prefix, like "handleClick" for onClick and "handleKeyDown" for onKeyDown.
+- Implement accessibility features on elements. For example, a tag should have a tabindex="0", aria-label, on:click, and on:keydown, and similar attributes.
+- Use arrow functions (const handleClick = () => {}) instead of function declarations when defining handlers or utilities inside components.
 
 ## Available Commands
 
@@ -241,7 +308,7 @@ Goal: Analyze user requirements and create a design document (design.md) in src/
 
 **Remember: ALWAYS write design docs in english**
 **Remember: ALWAYS provide browsing links to ui.shadcn.com for each shadcn component you suggest to user**
-**Remember: ALWAYS separate pages to sections and sections to components, i want clear structure**
+**Remember: ALWAYS separate pages to sections and sections to components, ensure clear, modular structure**
 **Remember: ALWAYS think about responsive design principles**
 
 ### Phase 2: generate steps for building the pages or sections based on design docs
@@ -256,15 +323,16 @@ Goal: Create a detailed step-by-step plan for building each page or sections.
      - List all required components
      - For EACH component, write out the exact steps to:
        - Install the component using `npx shadcn@latest add [component-name]`
-       - Import the component into files located at `/components/[page-name]/` or `/sections/[section-name]/`
+       - Import the component into files located at `src/components/[page-name]/` or `src/sections/[section-name]/`
        - Arrange the component according to the design doc specification
        - Handle shared components (import from shared location if applicable)
+       - Specify responsive breakpoints and layout structure in Tailwind (mobile → desktop)
      - Include testing steps to ensure all components render correctly
 
 2. End Phase 2 and wait for user response.
 
 **Remember: ALWAYS write steps in english**
-**Remember: ALWAYS separate pages to sections and sections to components, i want clear structure**
+**Remember: ALWAYS separate pages to sections and sections to components, ensure clear, modular structure**
 **Remember: ALWAYS think about responsive design principles**
 
 ### Phase 3: Install User-Selected Shadcn Components
@@ -275,34 +343,34 @@ Goal: Create a detailed step-by-step plan for building each page or sections.
 
 2. **Install shadcn components**:
 
-   - For EACH component the user specifies, install it to `/components/[page-name]/`
+   - For EACH component the user specifies, install it to `src/components/ui/`
    - Use: `npx shadcn@latest add [component-name]`
    - **If multiple components**: (check install output for missing components):
-     - Install dependencies in PARALLEL immediately
+     - Install all required components in a single command to avoid version conflicts.
      - Example: `npx shadcn@latest add button input label` (all at once)
 
 ### Phase 4: Assemble Page or section
 
 Once all components for a page are installed:
 
-1. If create page create `/app/[page-name]/page.tsx`, for each section create `/sections/[section-name]/index.tsx`, and for each component create `/components/[component-name]/index.tsx`, but if user want only one section, create it directly in `/sections/[section-name]/index.tsx`
-2. Import all installed components from `/components/[page-name]/`
+1. If creating a page, create `src/app/[page-name]/page.tsx`. For each section create `src/sections/[section-name]/index.tsx`, and for each component create `src/components/[component-name]/index.tsx`. If the user requests only one section, create it directly in `src/sections/[section-name]/index.tsx`
+2. Import all installed components from `src/components/ui/`
 3. Arrange according to design doc specification
 4. Handle shared components (import from shared location if applicable)
 5. Test that imports work correctly
-6. When done, and user approves, remove every files from `src/copilot/*` folder to keep project clean
+6. When done, and user approves, remove every files from `src/copilot/*` folder to keep project clean (only after user confirmation and successful page assembly)
 
 ## Key Rules
 
-1. **ALWAYS Separate to smaller parts** - ALWAYS separate pages to sections and sections to components, i want clear structure
+1. **ALWAYS Separate to smaller parts** - ALWAYS separate pages to sections and sections to components, ensure clear, modular structure
 2. **Be autonomous** - Create design docs automatically from user's description
 3. **Provide browsing links** - Always give user direct links to components on shadcn website
-4. **Page vs Section** - If user want page, separate page for sections
+4. **Page vs Section** - If the user requests a page, separate it into sections
 5. **One at a time** - User can want only one page or only one section per request, if want more, ask for them one at a time.
 6. **Responsive design** - ALWAYS think about responsive design principles
-7. **Use MCP server** - ALWAYS use MCP server to get component info and install components
+7. **Use MCP server** - ALWAYS use MCP server to get component info and install components, If the MCP server is unavailable, request user confirmation before using npx shadcn add directly.
 8. **Installation command** - ALWAYS use `npx shadcn@latest add [component-name]` to install components
-9. **Text content to variables** - ALWAYS move text content to variables under component
+9. **Text content to variables** - ALWAYS move text content to variables (e.g. `const TITLE = "Welcome"`), and reuse them inside JSX for localization and maintainability.
 10. **Clean up** - ALWAYS remove every files from `src/copilot/*` folder
 
 ## Formatting Rules for Outputs
@@ -313,19 +381,22 @@ Once all components for a page are installed:
 
 ## File Structure Rules — Pages, Sections, Components
 
+**The following file rules extend the base Next.js project structure.**
+
 Goal: Ensure modular, clean, and maintainable code.
 Copilot MUST always separate the UI into smaller parts to avoid large monolithic files.
 
 **Rules:**
 
 - Page = high-level layout
-- Each page is located in /app/[page-name]/page.tsx
+- Each page is located in src/app/[page-name]/page.tsx
 - A page should only import sections, not individual UI components directly.
 - Section = mid-level group of related UI
-- Each section is located in /sections/[section-name]/index.tsx
+- Each section is located in src/sections/[section-name]/index.tsx
 - Each section should import only components, not other sections or pages.
 - Component = low-level UI element
-- Each component is located in /components/[section-or-page-name]/[component-name].tsx
+- Each component is located in src/components/[section-or-page-name]/[component-name]/index.tsx
+- Each component folder may contain related files (tests, stories, types)
 - Each component should contain minimal logic and be fully reusable.
 
 **File size rule:**
@@ -341,6 +412,13 @@ Copilot MUST always separate the UI into smaller parts to avoid large monolithic
 
 **Naming conventions:**
 
-- Pages → kebab-case (/app/user-profile/page.tsx)
-- Sections → kebab-case (/sections/user-profile/header/index.tsx)
-- Components → PascalCase (/components/user-profile/UserCard.tsx)
+- Pages → kebab-case (src/app/user-profile/page.tsx)
+- Sections → kebab-case (src/sections/user-profile/header/index.tsx)
+- Components → kebab-case folders with index.tsx (src/components/user-profile/user-card/index.tsx)
+- Component folders may contain: index.tsx, [component].test.tsx, [component].stories.tsx, types.ts
+
+### Shared Components
+
+- Reusable components used across multiple sections must be stored in `src/components/shared/[component-name]/index.tsx`.
+- Do not duplicate the same UI pattern across different pages.
+- Always import shared components before creating new ones.

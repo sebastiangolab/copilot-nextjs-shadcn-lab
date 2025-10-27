@@ -18,12 +18,5 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {
-    "@kibo-ui": {
-      "url": "https://www.kibo-ui.com/r/{name}.json"
-    },
-    "@kibo-patterns": {
-      "url": "http://localhost:3000/r/{name}.json"
-    }
-  }
+  "registries": {}
 }
