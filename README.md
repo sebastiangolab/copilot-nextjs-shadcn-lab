@@ -1,5 +1,5 @@
 ````markdown
-# copilot-nextjs-kiboui-lab
+# copilot-nextjs-shadcn-lab
 
 Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo-patterns integration for UI development with AI.
 
@@ -9,7 +9,6 @@ Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo
 - **[TypeScript](https://www.typescriptlang.org/)** - Static typing
 - **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[shadcn/ui](https://ui.shadcn.com/)** - UI components via MCP server
-- **[kibo-patterns](https://www.kibo-ui.com/patterns)** - Pre-built component patterns
 - **[GitHub Copilot](https://github.com/features/copilot)** - AI-assisted development
 - **[MCP Server](https://modelcontextprotocol.io/)** - Model Context Protocol for shadcn
 - **[ESLint](https://eslint.org/)** - Linting
@@ -19,10 +18,10 @@ Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo
 This laboratory project where i tested how to use:
 - **GitHub Copilot** with custom instructions for intelligent page/section generation
 - **shadcn MCP server** for seamless component integration
-- **kibo-patterns registry** for rapid UI prototyping
+- **shadcn/ui components** components to build features
 - **AI-driven workflow** for building Next.js applications
 
-The setup enables generating complete pages and sections through natural language prompts to Copilot, which intelligently selects and assembles components from kibo-patterns.
+The setup enables generating complete pages and sections through natural language prompts to Copilot, which intelligently selects and assembles components from shadcn/ui.
 
 ## 🛠️ Available Commands
 
@@ -45,7 +44,7 @@ npm run lint
 1. Clone repo from github
    ```bash
    git clone LINK
-   cd copilot-nextjs-kiboui-lab
+   cd copilot-nextjs-shadcn-lab
    ```
 
 2. Install dependencies
@@ -53,16 +52,14 @@ npm run lint
    npm i
    ```
 
-3. Clone and locally run repo: https://github.com/ailabs-393/Patterns-Registry.git - this is needed to correctly read @kibo-patterns registry in shadcn mcp 
+3. Try to generate page or section by copilot, make prompt for example "Create page by description: [detailed about page or secion]"
 
-4. Try to generate page or section by copilot, make prompt for example "Create page by description: [detailed about page or secion]"
-
-5. **Start the development server:**
+4. **Start the development server:**
    ```bash
    npm run dev
    ```
 
-2. **Open your browser:**
+5. **Open your browser:**
    Go to [http://localhost:3001](http://localhost:3001)
 
 
@@ -73,13 +70,13 @@ npm run lint
 ```
 src/
 ├── app/                 # App Router (Next.js 13+)
-│   ├── globals.css     # Global CSS styles + Tailwind
-│   ├── layout.tsx      # Root layout
-│   └── page.tsx        # Homepage
-├── components/         # React components
-│   └── ui/            # shadcn/ui components
-├── lib/               # Utility functions
-└── lib/utils.ts       # cn() helper for Tailwind
+│   ├── globals.css      # Global CSS styles + Tailwind
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Homepage
+├── components/          # React components
+│   └── ui/              # shadcn/ui components
+├── lib/                 # Utility functions
+└── sections/            # Sections components
 
 ```
 

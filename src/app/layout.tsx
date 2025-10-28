@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Allerta_Stencil } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 const allertaStencil = Allerta_Stencil({
@@ -29,7 +30,14 @@ export default function RootLayout({
         />
       </head>
       <body className={`${allertaStencil.variable} font-sans antialiased`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
