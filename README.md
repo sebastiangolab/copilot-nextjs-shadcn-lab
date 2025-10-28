@@ -1,7 +1,7 @@
 ````markdown
 # copilot-nextjs-shadcn-lab
 
-Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo-patterns integration for UI development with AI.
+Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP integration for UI development with AI.
 
 ## 🚀 Tech Stack
 
@@ -16,6 +16,7 @@ Experimental laboratory for testing Next.js + GitHub Copilot + shadcn MCP + kibo
 ## 🎯 Project Purpose
 
 This laboratory project where i tested how to use:
+
 - **GitHub Copilot** with custom instructions for intelligent page/section generation
 - **shadcn MCP server** for seamless component integration
 - **shadcn/ui components** components to build features
@@ -42,12 +43,14 @@ npm run lint
 ## 🚀 Quick Start to test
 
 1. Clone repo from github
+
    ```bash
    git clone LINK
    cd copilot-nextjs-shadcn-lab
    ```
 
 2. Install dependencies
+
    ```bash
    npm i
    ```
@@ -55,30 +58,13 @@ npm run lint
 3. Try to generate page or section by copilot, make prompt for example "Create page by description: [detailed about page or secion]"
 
 4. **Start the development server:**
+
    ```bash
    npm run dev
    ```
 
 5. **Open your browser:**
    Go to [http://localhost:3001](http://localhost:3001)
-
-
-## 🔧 Configuration
-
-## 📁 Project Structure
-
-```
-src/
-├── app/                 # App Router (Next.js 13+)
-│   ├── globals.css      # Global CSS styles + Tailwind
-│   ├── layout.tsx       # Root layout
-│   └── page.tsx         # Homepage
-├── components/          # React components
-│   └── ui/              # shadcn/ui components
-├── lib/                 # Utility functions
-└── sections/            # Sections components
-
-```
 
 ## 🔍 System Requirements
 
@@ -92,3 +78,4 @@ The project includes `.nvmrc` file with Node.js version - use `nvm use` to switc
 The easiest way to deploy is using [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
 Check out [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+````
